@@ -1,0 +1,16 @@
+.item_card {
+    margin-top: 3%;
+    background: #e5eaef;
+}
+
+.button_section {
+    margin-top: 10px;
+}
+
+.button_section button {
+    margin: 10px;
+}
+
+.button_section .check_resolved {
+    /*background: green;*/
+}
