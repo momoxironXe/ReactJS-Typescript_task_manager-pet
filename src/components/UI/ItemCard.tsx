@@ -14,6 +14,7 @@ const ItemCard: React.FC<{
   date: number;
   status: boolean;
   from: string;
+  to: string;
   onChangeMyTaskStatus: (task: Task) => void;
   onDeleteMyTask: (task: Task) => void;
   statusIcon: ReactElement;
@@ -25,6 +26,7 @@ const ItemCard: React.FC<{
       data: props.date,
       status: props.status,
       from: props.from,
+      to: props.to
     });
   };
 
@@ -35,6 +37,7 @@ const ItemCard: React.FC<{
       data: props.date,
       status: props.status,
       from: props.from,
+      to: props.to
     });
   };
 
@@ -42,6 +45,9 @@ const ItemCard: React.FC<{
     <Badge.Ribbon text={props.badgeText} color={props.badgeColor}>
       <Card hoverable className={classes.item_card} title={props.title}>
         <p>{props.description}</p>
+        <Text strong underline>
+          <p>From: {props.from}</p>
+        </Text>
         <Text italic>
           Created at: {new Date(props.date).toLocaleDateString("en-US")}
         </Text>

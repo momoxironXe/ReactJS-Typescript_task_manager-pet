@@ -27,12 +27,14 @@ const Login: React.FC = () => {
             description: `Hello, ${user.email}. Do you like my app?`,
             data: new Date().getTime(),
             from: "admin",
+            to: user.email!,
             status: false,
           },
         ];
         setDoc(doc(db, "users", user.uid), {
           email: user.email,
           tasks: userInitialTasks,
+          deliveredTasks: [],
         }).then();
         dispatch(authActions.login({ uid: user.uid, email: values.email }));
       })

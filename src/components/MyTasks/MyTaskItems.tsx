@@ -6,8 +6,8 @@ import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 const MyTaskItems: React.FC<{
   tasks: Task[];
-  onChangeMyTaskStatus: (task: Task) => void;
-  onDeleteMyTask: (task: Task) => void;
+  onChangeTaskStatus: (task: Task) => void;
+  onDeleteTask: (task: Task) => void;
 }> = (props) => {
   const resolvedTasks = props.tasks.filter((item) => item.status);
   const newTasks = props.tasks.filter((item) => !item.status);
@@ -25,10 +25,11 @@ const MyTaskItems: React.FC<{
               date={item.data}
               description={item.description}
               key={item.data}
-              onChangeMyTaskStatus={props.onChangeMyTaskStatus}
+              onChangeMyTaskStatus={props.onChangeTaskStatus}
               from={item.from}
+              to={item.to}
               statusIcon={<CheckCircleOutlined />}
-              onDeleteMyTask={props.onDeleteMyTask}
+              onDeleteMyTask={props.onDeleteTask}
             />
           ))}
       </TasksCard>
@@ -43,10 +44,11 @@ const MyTaskItems: React.FC<{
               date={item.data}
               description={item.description}
               key={item.data}
-              onChangeMyTaskStatus={props.onChangeMyTaskStatus}
+              onChangeMyTaskStatus={props.onChangeTaskStatus}
               from={item.from}
               statusIcon={<CloseCircleOutlined />}
-              onDeleteMyTask={props.onDeleteMyTask}
+              onDeleteMyTask={props.onDeleteTask}
+              to={item.to}
             />
           ))}
       </TasksCard>

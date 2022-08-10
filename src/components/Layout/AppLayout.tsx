@@ -1,10 +1,10 @@
 import classes from "./AppLayout.module.css";
 
-import { PieChartOutlined, LogoutOutlined } from "@ant-design/icons";
+import { PieChartOutlined, LogoutOutlined, UserSwitchOutlined, FormOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Layout, Menu, Typography } from "antd";
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { authFirebase } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { authActions } from "../../store/auth";
@@ -29,18 +29,20 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("My Tasks", "1", <PieChartOutlined />),
+  getItem("My Tasks", "myTasks", <PieChartOutlined />),
+  getItem("Delivered Tasks", "deliveredTasks", <UserSwitchOutlined />),
+  getItem("Create Task", "createTask", <FormOutlined />),
   getItem("Sign out", "signOut", <LogoutOutlined />),
 ];
 
 const AppLayout: React.FC = () => {
+  const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
-  const [current, setCurrent] = useState("1");
+  const [current, setCurrent] = useState("myTasks");
   const dispatch = useAppDispatch();
   const userEmail = useAppSelector(state => state.auth.email);
 
   const onClick: MenuProps["onClick"] = (e) => {
-    console.log("click ", e);
     setCurrent(e.key);
     if (e.key === "signOut") {
       signOut(authFirebase)
@@ -50,6 +52,15 @@ const AppLayout: React.FC = () => {
         .catch((error) => {
           // An error happened.
         });
+    }
+    if (e.key === "myTasks") {
+      navigate("/tasks", { replace: true })
+    }
+    if (e.key === "deliveredTasks") {
+      navigate("/delivered-tasks", { replace: true })
+    }
+    if (e.key === "createTask") {
+      navigate("/create-task", { replace: true })
     }
   };
 
