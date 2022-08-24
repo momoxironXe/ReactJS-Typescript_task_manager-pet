@@ -1,6 +1,6 @@
 import { Card, Badge, Typography, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import classes from "./ItemCard.module.css";
 import { Task } from "../../models";
 

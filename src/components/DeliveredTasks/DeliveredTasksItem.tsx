@@ -1,7 +1,6 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { Card, Typography } from "antd";
 import classes from "../UI/ItemCard.module.css";
-import { Task } from "../../models";
 
 const { Text } = Typography;
 

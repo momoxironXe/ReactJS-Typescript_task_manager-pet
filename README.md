@@ -1,3 +1,7 @@
+# Deployed App
+
+You can check this app at https://task-manager-pet-5484f.web.app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

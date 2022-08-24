@@ -4,10 +4,8 @@ import { fetchUsers } from "../../store/users";
 import { fetchDeliveredTasks, tasksActions } from "../../store/tasks";
 import DeliveredTasksItems from "./DeliveredTasksItems";
 import { Empty } from "antd";
-import Loading from "../UI/Loading";
 
 const DeliveredTasks: React.FC = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const uid = useAppSelector(state => state.auth.uid);
   const deliveredTasks = useAppSelector(state => state.tasks.deliveredTasks);
